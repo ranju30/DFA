@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Tuple {
 
@@ -7,9 +9,9 @@ public class Tuple {
     private String initialState;
     private ArrayList<String> alphabets;
     private ArrayList<String> finalStates;
-    private ArrayList<ArrayList<String>> transitions;
+    private Map<String, Map<String, String>> transitions;
 
-    public Tuple(ArrayList<String> states, String initialState, ArrayList<String> alphabets, ArrayList<String> finalStates, ArrayList<ArrayList<String>> transitions) {
+    public Tuple(ArrayList<String> states, String initialState, ArrayList<String> alphabets, ArrayList<String> finalStates, Map transitions) {
 
         this.states = states;
         this.initialState = initialState;
@@ -34,7 +36,7 @@ public class Tuple {
         return finalStates;
     }
 
-    public ArrayList<ArrayList<String>> getAllTransitions() {
+    public Map getAllTransitions() {
         return transitions;
     }
 }

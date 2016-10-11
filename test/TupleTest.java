@@ -2,6 +2,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static junit.framework.TestCase.assertTrue;
 
@@ -24,23 +26,13 @@ public class TupleTest {
         ArrayList<String> finalStates = new ArrayList<String>();
         finalStates.add("q2");
 
-        ArrayList<ArrayList<String>> transitions = new ArrayList<ArrayList<String>>();
-
-        ArrayList<String> firstTransitions = new ArrayList<String>();
-        firstTransitions.add("q1");
-        firstTransitions.add("1");
-        firstTransitions.add("q2");
-        ArrayList<String> secondTransitions = new ArrayList<String>();
-        secondTransitions.add("q2");
-        secondTransitions.add("0");
-        secondTransitions.add("q1");
-        ArrayList<String> thirdTransitions = new ArrayList<String>();
-        firstTransitions.add("q1");
-        firstTransitions.add("1");
-        firstTransitions.add("q2");
-        transitions.add(firstTransitions);
-        transitions.add(secondTransitions);
-        transitions.add(thirdTransitions);
+        Map<String, Map<String, String>> transitions = new HashMap<String, Map<String, String>>();
+        transitions.put("q1",new HashMap<String, String>());
+        transitions.get("q1").put("1","q2");
+        transitions.put("q2",new HashMap<String, String>());
+        transitions.get("q2").put("0","q1");
+        transitions.put("q1",new HashMap<String, String>());
+        transitions.get("q1").put("1","q2");
 
         tuple = new Tuple(states, initialState, alphabets, finalStates, transitions);
     }
@@ -77,23 +69,14 @@ public class TupleTest {
 
     @Test
     public void shouldGetAllTransitions() {
-        ArrayList<ArrayList<String>> expected = new ArrayList<ArrayList<String>>();
+        Map<String, Map<String, String>> expected = new HashMap<String, Map<String, String>>();
+        expected.put("q1",new HashMap<String, String>());
+        expected.get("q1").put("1","q2");
+        expected.put("q2",new HashMap<String, String>());
+        expected.get("q2").put("0","q1");
+        expected.put("q1",new HashMap<String, String>());
+        expected.get("q1").put("1","q2");
 
-        ArrayList<String> firstTransitions = new ArrayList<String>();
-        firstTransitions.add("q1");
-        firstTransitions.add("1");
-        firstTransitions.add("q2");
-        ArrayList<String> secondTransitions = new ArrayList<String>();
-        secondTransitions.add("q2");
-        secondTransitions.add("0");
-        secondTransitions.add("q1");
-        ArrayList<String> thirdTransitions = new ArrayList<String>();
-        firstTransitions.add("q1");
-        firstTransitions.add("1");
-        firstTransitions.add("q2");
-        expected.add(firstTransitions);
-        expected.add(secondTransitions);
-        expected.add(thirdTransitions);
         assertTrue(tuple.getAllTransitions().equals(expected));
     }
 }
