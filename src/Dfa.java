@@ -1,10 +1,12 @@
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Dfa {
     private Tuple tuple;
-    private Map<String,Map<String,String>> allTransitions = new HashMap<String, Map<String, String>>();
+    private Map<String, Map<String, String>> allTransitions = new HashMap<String, Map<String, String>>();
 
     public Dfa(Tuple dfaTuple) {
         this.tuple = dfaTuple;
@@ -15,16 +17,15 @@ public class Dfa {
         ArrayList<String> finalStates = tuple.getFinalStates();
         allTransitions = tuple.getAllTransitions();
         ArrayList<String> alphabets = tuple.getAlphabets();
-        ArrayList<String> states = tuple.getStates();
         for (String alphabet : alphabets) {
             currentState = processTransition(currentState, alphabet);
         }
         return finalStates.contains(currentState);
     }
 
-    private String processTransition(String initialState, String alphabet) {
-        if (allTransitions.containsKey(initialState)) {
-            return allTransitions.get(initialState).get(alphabet);
+    private String processTransition(String currentState, String alphabet) {
+        if (allTransitions.containsKey(currentState)) {
+            return allTransitions.get(currentState).get(alphabet);
         }
         return null;
     }
