@@ -2,19 +2,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 public class DfaTest {
 
-    ArrayList<String> states;
-    String initialState;
-    ArrayList<String> alphabets;
-    Transitions transitions;
-    ArrayList<String> finalStates;
+    private ArrayList<String> states;
+    private String initialState;
+    private ArrayList<String> alphabets;
+    private Transitions transitions;
+    private ArrayList<String> finalStates;
 
     @Before
     public void model() {
