@@ -16,7 +16,6 @@ public class Dfa {
         allTransitions = tuple.getAllTransitions();
         ArrayList<String> alphabets = tuple.getAlphabets();
         for (String alphabet : alphabets) {
-
             currentState = allTransitions.processTransitions(currentState, alphabet);
         }
         return finalStates.contains(currentState);

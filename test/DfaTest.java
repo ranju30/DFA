@@ -13,7 +13,7 @@ public class DfaTest {
     ArrayList<String> states;
     String initialState;
     ArrayList<String> alphabets;
-    Transitions  transitions;
+    Transitions transitions;
     ArrayList<String> finalStates;
 
     @Before
@@ -33,9 +33,9 @@ public class DfaTest {
         finalStates.add("q2");
 
         transitions = new Transitions();
-        transitions.setTransitions("q1","q2","1");
-        transitions.setTransitions("q2","q1","0");
-        transitions.setTransitions("q1","q2","1");
+        transitions.setTransitions("q1", "q2", "1");
+        transitions.setTransitions("q2", "q1", "0");
+        transitions.setTransitions("q1", "q2", "1");
     }
 
     @Test

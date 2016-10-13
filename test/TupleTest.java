@@ -27,9 +27,9 @@ public class TupleTest {
         finalStates.add("q2");
 
         Transitions transitions = new Transitions();
-        transitions.setTransitions("q1","q2","1");
-        transitions.setTransitions("q2","q1","0");
-        transitions.setTransitions("q1","q2","1");
+        transitions.setTransitions("q1", "q2", "1");
+        transitions.setTransitions("q2", "q1", "0");
+        transitions.setTransitions("q1", "q2", "1");
 
         tuple = new Tuple(states, initialState, alphabets, finalStates, transitions);
     }
