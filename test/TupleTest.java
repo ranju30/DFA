@@ -26,13 +26,10 @@ public class TupleTest {
         ArrayList<String> finalStates = new ArrayList<String>();
         finalStates.add("q2");
 
-        Map<String, Map<String, String>> transitions = new HashMap<String, Map<String, String>>();
-        transitions.put("q1", new HashMap<String, String>());
-        transitions.get("q1").put("1", "q2");
-        transitions.put("q2", new HashMap<String, String>());
-        transitions.get("q2").put("0", "q1");
-        transitions.put("q1", new HashMap<String, String>());
-        transitions.get("q1").put("1", "q2");
+        Transitions transitions = new Transitions();
+        transitions.setTransitions("q1","q2","1");
+        transitions.setTransitions("q2","q1","0");
+        transitions.setTransitions("q1","q2","1");
 
         tuple = new Tuple(states, initialState, alphabets, finalStates, transitions);
     }
@@ -65,18 +62,5 @@ public class TupleTest {
         ArrayList<String> expected = new ArrayList<String>();
         expected.add("q2");
         assertTrue(tuple.getFinalStates().equals(expected));
-    }
-
-    @Test
-    public void shouldGetAllTransitions() {
-        Map<String, Map<String, String>> expected = new HashMap<String, Map<String, String>>();
-        expected.put("q1", new HashMap<String, String>());
-        expected.get("q1").put("1", "q2");
-        expected.put("q2", new HashMap<String, String>());
-        expected.get("q2").put("0", "q1");
-        expected.put("q1", new HashMap<String, String>());
-        expected.get("q1").put("1", "q2");
-
-        assertTrue(tuple.getAllTransitions().equals(expected));
     }
 }

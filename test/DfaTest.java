@@ -13,7 +13,7 @@ public class DfaTest {
     ArrayList<String> states;
     String initialState;
     ArrayList<String> alphabets;
-    Map<String, Map<String, String>> transitions;
+    Transitions  transitions;
     ArrayList<String> finalStates;
 
     @Before
@@ -32,13 +32,10 @@ public class DfaTest {
         finalStates = new ArrayList<String>();
         finalStates.add("q2");
 
-        transitions = new HashMap<String, Map<String, String>>();
-        transitions.put("q1", new HashMap<String, String>());
-        transitions.get("q1").put("1", "q2");
-        transitions.put("q2", new HashMap<String, String>());
-        transitions.get("q2").put("0", "q1");
-        transitions.put("q1", new HashMap<String, String>());
-        transitions.get("q1").put("1", "q2");
+        transitions = new Transitions();
+        transitions.setTransitions("q1","q2","1");
+        transitions.setTransitions("q2","q1","0");
+        transitions.setTransitions("q1","q2","1");
     }
 
     @Test
